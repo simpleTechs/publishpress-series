@@ -131,7 +131,8 @@ function set_series_order($postid = 0, $series_part = 0, $series_id, $is_publish
 	}
 
 	$published_posts = $total_posts - $unpub_count;
-	if ( (isset($total_posts)) && ( ($published_posts < $series_part ) || $series_part <=  0 || $published_posts == 1 ) ) {
+	// if the part is set manually, do not override it
+	if ( $series_part <= 0 && (isset($total_posts)) && ( ($published_posts < $series_part ) || $series_part <=  0 || $published_posts == 1 ) ) {
 		if ( ($published_posts >= 1) && $is_published ) {
 			$series_part = $published_posts;
 		}
