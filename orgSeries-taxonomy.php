@@ -148,6 +148,8 @@ function set_series_order($postid = 0, $series_part = 0, $series_id, $is_publish
 	$drop = false;
 	$oldpart = 0;
 	$rise = null;
+	// this part will update *other* posts and will lead to weird results for part_numbers like 101
+	/*
 	if ( $count >= 1 ) {
 		foreach ( $series_posts as $sposts ) {
 			$currentpart = $sposts['part'];
@@ -233,7 +235,7 @@ function set_series_order($postid = 0, $series_part = 0, $series_id, $is_publish
 			}
 			unset($newpart);
 		}
-	}
+	} */
 	$series_part_key = apply_filters('orgseries_part_key', SERIES_PART_KEY, $series_id);
 	delete_post_meta($postid, $series_part_key);
 	add_post_meta($postid, $series_part_key, $series_part);
